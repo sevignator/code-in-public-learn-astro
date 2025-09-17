@@ -1,4 +1,6 @@
 ---
+import Container from '@/components/Container.astro';
+
 interface MenuItem {
   href: string;
   text: string;
@@ -16,18 +18,39 @@ const menuItems: MenuItem[] = [
 ];
 ---
 
-<nav>
-  <a href="/" class="logo">Mik Sévigny</a>
+<nav class="navbar">
+  <Container class="navbar-container">
+    <a href="/" class="logo">Mik Sévigny</a>
 
-  <ul>
-    {menuItems.map(item => (
-      <li><a href={item.href}>{item.text}</a></li>
-    ))}
-  </ul>
+    <ul class="menu">
+      {
+        menuItems.map((item) => (
+          <li class="menu-item">
+            <a href={item.href}>{item.text}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </Container>
 </nav>
 
 <style>
+  .navbar {
+    padding-block: 12px;
+    background-color: #ddd;
+    font-size: var(--fs-400);
+  }
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+  }
   .logo {
     text-transform: uppercase;
+  }
+  .menu {
+    display: flex;
+    gap: 10px;
+    padding: 0;
+    list-style: none;
   }
 </style>
