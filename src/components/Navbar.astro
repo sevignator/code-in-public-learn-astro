@@ -1,0 +1,33 @@
+---
+interface MenuItem {
+  href: string;
+  text: string;
+}
+
+const menuItems: MenuItem[] = [
+  {
+    href: '/blog',
+    text: 'Blog',
+  },
+  {
+    href: '/contact',
+    text: 'Contact',
+  },
+];
+---
+
+<nav>
+  <a href="/" class="logo">Mik Sévigny</a>
+
+  <ul>
+    {menuItems.map(item => (
+      <li><a href={item.href}>{item.text}</a></li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .logo {
+    text-transform: uppercase;
+  }
+</style>
